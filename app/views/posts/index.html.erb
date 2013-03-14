@@ -1,0 +1,17 @@
+<h1>Our Blog</h1>
+
+<% @posts.each do |post| %>
+  <div style="float: left; margin-right: 10px;">
+  	<%= image_tag post.photo.url(:small) %>
+  </div>
+  <div>
+  	<div><h3><%= link_to post.title, post %></h3></div>
+  	<div><h2><%= post.created_at %></h2></div>
+  </div>
+  <p><%= post.content %></p>
+  <hr />
+<% end %>
+
+<% if can? :update, @posts %>
+  <p><%= link_to "Add a New Post", new_post_path %></p>
+<% end %>
