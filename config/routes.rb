@@ -1,8 +1,18 @@
 Blog::Application.routes.draw do
+  #get "category/index"
+  #get "category/new"
+  #get "category/edit"
+  #get "category/show"
+
+  
+  match 'auth/:provider/callback', to: 'sessions#create'
+  match 'auth/failure', to: redirect('/')
+  match 'signout', to: 'sessions#destroy', as: 'signout'
   
   devise_for :users
 
   resources :posts
+  resources :categories
 
   root to: "posts#index"
 

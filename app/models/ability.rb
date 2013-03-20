@@ -7,7 +7,8 @@ class Ability
 		if user.role? :admin
 		    can :manage, :all
 		else
-			can :read, :all
+			can :manage, :all #for testing purposes only
+			#can :read, :all
 			#can :create, Comment
 			#can :update, Comment
 				#comment.try(user) == user || user.role?(:moderator)	

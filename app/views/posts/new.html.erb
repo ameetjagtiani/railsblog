@@ -1,6 +1,6 @@
 <h1>Add a New Post</h1>
 
-<%= form_for @post, :html => { :multipart => true } do |f| %>
+<%= simple_form_for @post, :html => { :multipart => true, :class => 'form-horizontal' } do |f| %>
     <% if @post.errors.any? %>
  		<h2>Errors:</h2>
  		<ul>
@@ -10,16 +10,16 @@
  		</ul>
 	<% end %>
 	<p>
-      <%= f.label :title %><br>
-      <%= f.text_field :title %>
+      <%= f.input :title %>
 	</p>
 	<p>
-      <%= f.label :content %><br>
-      <%= f.text_area :content %>
+      <%= f.input :content %>
 	</p>
 	<p>
-		<%= f.label :photo %><br>
-		<%= f.file_field :photo %>
+		<%= f.input :photo %>
+	</p>
+	<p>
+		<%= f.association :categories, :as => :check_boxes %>
 	</p>
 	<p>
 	  <%= f.submit "Add a New Post", :class => "btn primary" %>

@@ -1,0 +1,12 @@
+<h1>Blog Categories</h1>
+
+<% @categories.each do |category| %>
+  <div>
+  	<div><h3><%= category.name %></h3> <%= category.created_at %></div>
+   </div>
+  <hr />
+<% end %>
+
+<% if can? :update, @categories %>
+  <p><%= link_to "Add a New Category", new_category_path %></p>
+<% end %>

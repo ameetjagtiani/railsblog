@@ -1,14 +1,14 @@
 <h1>Our Blog</h1>
 
 <% @posts.each do |post| %>
-  <div style="float: left; margin-right: 10px;">
+  <div style="float: left; margin-right: 10px; width: 150px; height: 120px;">
   	<%= image_tag post.photo.url(:small) %>
   </div>
   <div>
   	<div><h3><%= link_to post.title, post %></h3></div>
   	<div><h2><%= post.created_at %></h2></div>
+    <p><%= post.content %></p>
   </div>
-  <p><%= post.content %></p>
   <hr />
 <% end %>
 

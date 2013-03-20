@@ -1,0 +1,19 @@
+<h1>Add a New Category</h1>
+
+<%= form_for @category, :html => { :multipart => true } do |f| %>
+    <% if @category.errors.any? %>
+ 		<h2>Errors:</h2>
+ 		<ul>
+ 			<% @category.errors.full_messages.each do |message| %>
+ 				<li><%= message %></li>
+ 			<% end %>
+ 		</ul>
+	<% end %>
+	<p>
+      <%= f.label :name	%><br>
+      <%= f.text_field :name %>
+	</p>
+	<p>
+	  <%= f.submit "Add a New Category", :class => "btn primary" %>
+	</p>
+<% end %>

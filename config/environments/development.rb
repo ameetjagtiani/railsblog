@@ -36,4 +36,6 @@ Blog::Application.configure do
   config.assets.debug = true
 
   Paperclip.options[:command_path] = "C:\Program Files\ImageMagick-6.8.3-Q16\convert.exe"
+
+  OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 end
