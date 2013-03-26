@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
   	ROLES.reject { |r| ((roles_mask || 0) & 2**ROLES.index(r)).zero?}
   end
 
+  #determine what role the user has
   def role?(role)
   	roles.include? role.to_s
   end
@@ -36,7 +37,5 @@ class User < ActiveRecord::Base
       #user.roles_mask = 1
       user.save!
     end
-
   end
-
 end

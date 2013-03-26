@@ -4,6 +4,7 @@ class Ability
 	def initialize(user)
 		user ||= User.new #guest user
 
+		#debug: determine why user is getting set as null
 		if user.role? :admin
 		    can :manage, :all
 		else

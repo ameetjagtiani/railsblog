@@ -2,6 +2,15 @@
 <h1><%= @post.title %></h1>
 <p><%= @post.content %></p>
 <small><%= @post.created_at %></small>
+<!-- add an approve button that will go behind scenes and set the status of the post to 
+	approved, when click approve will call action behind scenes to update the status -->
+<div>
+	<% #button to approve the status %>
+	<!-- when click button trigger event to save status -->
+	<!-- pass in the post id so you can find post and update status -->
+	<%= link_to "Approve", posts_approve_post_path(:id => @post.id), :class => "btn btn-primary" %> 
+</div>
+
 <p>
 	<% if can? :update, @post %>
 		<%= link_to "Edit", edit_post_path(@post) %> |

@@ -5,8 +5,14 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <!-- start: CSS -->
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Sans:400,700">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Serif">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Boogaloo">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Economica:700,400italic">
+  
 </head>
-<body style="background-color: #0099ff">
+<body>
 
 <% flash.each do |key, value| %>
   <%= value %>
@@ -16,16 +22,26 @@
 	<div class="navbar-inner">
 		<div class="container">
 			<a class="brand" href="/">The Bloggers House</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li><%= link_to "Login", new_user_session_path %></li>
+          <li><%= link_to "Categories", categories_path %></li>
+          <li><%= link_to "Articles" %></li>
+        </ul>
+      </div>
 		</div>
 	</div>
 </div>
 <br><br>
 <div style="width: 800px; margin-right: auto; margin-left: auto; border: 10px; background-color: #FFFFFF; padding: 10px">
   <div>
+    <!-- debug: find out why current_user is null and user_signed_in not working -->
     <% if user_signed_in? %>
      Signed in as <%= current_user.name %>. Not you?
      <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-     <% else %>
+     <% else %> 
+       <!-- right now if i click sign in it shows devise.en.yml message "You are already
+       signed in but it's not showing the user name  on the page" -->
        <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
        <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
        <% end %>
@@ -36,6 +52,7 @@
    <% end %>
 
   <%= yield %>
+
 </div>
 </body>
 </html>

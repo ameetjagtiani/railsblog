@@ -3,17 +3,16 @@ Blog::Application.routes.draw do
   #get "category/new"
   #get "category/edit"
   #get "category/show"
-
   
   match 'auth/:provider/callback', to: 'sessions#create'
   match 'auth/failure', to: redirect('/')
   match 'signout', to: 'sessions#destroy', as: 'signout'
-  
+
   devise_for :users
 
+  match '/posts/approve_post', :controller => 'posts', :action => 'approve_post'
   resources :posts
   resources :categories
-
   root to: "posts#index"
 
   # The priority is based upon order of creation:
